@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nolichucky Associates — Data Analytics for the Performing Arts</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Reset & Base ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:      #1A3A5C;
+      --navy-lt:   #2E5F8A;
+      --orange:    #E8922A;
+      --orange-lt: #F4A84A;
+      --teal:      #2A9EA0;
+      --teal-lt:   #4ABCBE;
+      --gray:      #F5F7FA;
+      --gray-mid:  #E2E8F0;
+      --ink:       #1A2535;
+      --ink-mid:   #4A5568;
+      --ink-lite:  #718096;
+      --white:     #FFFFFF;
+
+      --serif: 'Montserrat', sans-serif;
+      --body:  'Open Sans', sans-serif;
+      --max-w: 1100px;
+      --section-pad: 96px 24px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: var(--body);
+      font-size: 17px;
+      line-height: 1.75;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Nav ──────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+      box-shadow: 0 2px 12px rgba(26,58,92,.3);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo img {
+      height: 44px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--serif);
+      font-size: .85rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.8);
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--orange-lt); }
+
+    /* ── Hero ─────────────────────────────────────────── */
+    #hero {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 60%, #1A5A6A 100%);
+      padding: 100px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 50% 60% at 90% 50%, rgba(42,158,160,.15) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(232,146,42,.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .hero-text { color: var(--white); }
+
+    .hero-eyebrow {
+      font-family: var(--serif);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--teal-lt);
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+
+    .hero-title span { color: var(--orange-lt); }
+
+    .hero-subtitle {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: rgba(255,255,255,.82);
+      margin-bottom: 40px;
+      max-width: 520px;
+    }
+
+    .btn-group { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 28px;
+      border-radius: 3px;
+      font-family: var(--serif);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      transition: all .25s;
+      cursor: pointer;
+    }
+
+    .btn-primary { background: var(--orange); color: var(--white); }
+    .btn-primary:hover { background: var(--orange-lt); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(232,146,42,.4); }
+
+    .btn-outline { border: 1px solid rgba(255,255,255,.4); color: var(--white); }
+    .btn-outline:hover { border-color: var(--teal-lt); color: var(--teal-lt); transform: translateY(-2px); }
+
+    .hero-logo-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-logo-wrap img {
+      width: 280px;
+      filter: brightness(0) invert(1);
+      opacity: .15;
+    }
+
+    /* ── Section Shared ───────────────────────────────── */
+    section { padding: var(--section-pad); }
+    .inner { max-width: var(--max-w); margin: 0 auto; }
+
+    .section-label {
+      font-family: var(--serif);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      color: var(--navy);
+    }
+
+    .rule {
+      width: 48px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--orange), var(--teal));
+      margin-bottom: 40px;
+      border-radius: 2px;
+    }
+
+    /* ── Services ─────────────────────────────────────── */
+    #services { background: var(--gray); }
+
+    .services-intro {
+      max-width: 640px;
+      color: var(--ink-mid);
+      margin-bottom: 56px;
+      font-size: 1.05rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 32px;
+      border-top: 3px solid var(--gray-mid);
+      transition: all .3s;
+      position: relative;
+    }
+
+    .service-card:hover {
+      border-top-color: var(--orange);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(26,58,92,.1);
+    }
+
+    .service-icon {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+
+    .service-title {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .service-desc {
+      font-size: .9rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+
+    .service-card--highlight { border-top-color: var(--teal); }
+    .service-card--highlight:hover { border-top-color: var(--teal); }
+
+    /* ── About ────────────────────────────────────────── */
+    #about { background: var(--white); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-text {
+      color: var(--ink-mid);
+      margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .about-highlight {
+      background: var(--gray);
+      border-left: 3px solid var(--teal);
+      padding: 20px 24px;
+      border-radius: 0 4px 4px 0;
+      margin: 32px 0;
+      font-size: .95rem;
+      color: var(--ink-mid);
+      font-style: italic;
+    }
+
+    .about-sidebar {
+      background: var(--navy);
+      border-radius: 6px;
+      padding: 36px;
+      color: var(--white);
+      position: sticky;
+      top: 88px;
+    }
+
+    .about-sidebar h3 {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--teal-lt);
+      margin-bottom: 20px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      font-size: .8rem;
+    }
+
+    .skill-list {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+
+    .skill-list li {
+      font-size: .88rem;
+      color: rgba(255,255,255,.8);
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .skill-list li::before {
+      content: '▸';
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+
+    /* ── Blog / Insights ──────────────────────────────── */
+    #insights { background: var(--gray); }
+
+    .insights-coming {
+      text-align: center;
+      padding: 64px 24px;
+    }
+
+    .insights-coming p:first-child { font-size: 2.5rem; margin-bottom: 20px; }
+
+    /* ── Contact ──────────────────────────────────────── */
+    #contact { background: var(--white); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info h2 { margin-bottom: 16px; }
+    .contact-info .rule { margin-bottom: 28px; }
+
+    .contact-text {
+      color: var(--ink-mid);
+      margin-bottom: 36px;
+      font-size: 1rem;
+    }
+
+    .contact-links { display: flex; flex-direction: column; gap: 16px; }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--ink-mid);
+      font-size: .95rem;
+      transition: color .2s;
+    }
+
+    .contact-link:hover { color: var(--navy); }
+
+    .contact-link-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--gray);
+      border: 1px solid var(--gray-mid);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+
+    .contact-form {
+      background: var(--gray);
+      border-radius: 6px;
+      padding: 44px;
+    }
+
+    .contact-form h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+      color: var(--navy);
+    }
+
+    .form-group { margin-bottom: 20px; }
+
+    .form-label {
+      display: block;
+      font-family: var(--serif);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--ink-lite);
+      margin-bottom: 6px;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 11px 16px;
+      background: var(--white);
+      border: 1px solid var(--gray-mid);
+      border-radius: 3px;
+      font-family: var(--body);
+      font-size: .95rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-input:focus, .form-textarea:focus { border-color: var(--teal); }
+    .form-textarea { min-height: 120px; resize: vertical; }
+
+    .form-submit {
+      width: 100%;
+      padding: 13px;
+      background: var(--navy);
+      color: var(--white);
+      border: none;
+      border-radius: 3px;
+      font-family: var(--serif);
+      font-size: .82rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all .25s;
+      margin-top: 8px;
+    }
+
+    .form-submit:hover { background: var(--navy-lt); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(26,58,92,.25); }
+
+    /* ── Footer ───────────────────────────────────────── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,.5);
+      padding: 44px 24px;
+      text-align: center;
+      font-size: .85rem;
+    }
+
+    footer img {
+      height: 48px;
+      width: auto;
+      margin: 0 auto 16px;
+      filter: brightness(0) invert(1);
+      opacity: .7;
+    }
+
+    .footer-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--orange);
+      margin: 16px auto;
+      opacity: .4;
+    }
+
+    footer strong { color: var(--white); font-family: var(--serif); }
+
+    /* ── Responsive ───────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-logo-wrap { display: none; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-sidebar { position: static; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      :root { --section-pad: 72px 20px; }
+      nav { padding: 0 20px; }
+      .nav-links { gap: 20px; }
+      .nav-links a { font-size: .75rem; }
+      .contact-form { padding: 28px 20px; }
+    }
+
+    /* ── Scroll animation ─────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- ── Navigation ─────────────────────────────────────── -->
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="logo.png" alt="Nolichucky Associates" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#insights">Insights</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── Hero ───────────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Data Analytics for the Performing Arts</p>
+      <h1 class="hero-title">Turning Data into<br/><span>Growth</span> for the Arts</h1>
+      <p class="hero-subtitle">
+        Nolichucky Associates helps nonprofit performing arts organizations make smarter decisions — from audience development and patron segmentation to fundraising targeting and event optimization.
+      </p>
+      <div class="btn-group">
+        <a href="#services" class="btn btn-primary">Our Services</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-logo-wrap">
+      <img src="logo.png" alt="" aria-hidden="true" />
+    </div>
+  </div>
+</section>
+
+<!-- ── Services ───────────────────────────────────────── -->
+<section id="services">
+  <div class="inner">
+    <p class="section-label fade-up">What We Do</p>
+    <h2 class="section-title fade-up">Services</h2>
+    <div class="rule fade-up"></div>
+    <p class="services-intro fade-up">
+      We work directly with performing arts organizations to extract actionable intelligence from their data — connecting ticketing systems, donor records, and marketing platforms into a unified picture of their audience.
+    </p>
+
+    <div class="services-grid">
+
+      <div class="service-card fade-up service-card--highlight">
+        <div class="service-icon">🎯</div>
+        <h3 class="service-title">Fundraising Targeting</h3>
+        <p class="service-desc">Identify your highest-propensity donors before you ask. We build patron-level models that score your audience by giving likelihood, upgrade potential, and optimal ask timing — so your development team focuses where it matters most.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">🔗</div>
+        <h3 class="service-title">Data Ingestion</h3>
+        <p class="service-desc">Merge ticketing data with platforms like Salesforce and financial systems to deepen your understanding of each patron's full relationship with your organization.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">🗄️</div>
+        <h3 class="service-title">Data Integration & Preparation</h3>
+        <p class="service-desc">Consolidate diverse data sources into unified, accurate formats. Establish a single source of truth that supports confident, data-driven decision making across your organization.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">👥</div>
+        <h3 class="service-title">Audience Analytics & Segmentation</h3>
+        <p class="service-desc">Examine event outcomes and audience behaviors to reveal trends and opportunities. Build precise patron segments by preference, attendance history, geography, and engagement level.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">📊</div>
+        <h3 class="service-title">Marketing Analytics</h3>
+        <p class="service-desc">Evaluate your marketing initiatives across email, social media, and direct mail. Refine promotional strategies for each patron segment to maximize engagement and return.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">📣</div>
+        <h3 class="service-title">Marketing & Promotion Strategy</h3>
+        <p class="service-desc">Develop targeted campaigns based on advanced segmentation and audience modeling. Enable personalized outreach that resonates — and converts.</p>
+      </div>
+
+      <div class="service-card fade-up">
+        <div class="service-icon">💰</div>
+        <h3 class="service-title">Event Management & Pricing Optimization</h3>
+        <p class="service-desc">Data-driven guidance on event tactics, pricing strategy, and profitability — without sacrificing audience accessibility or satisfaction.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── About ───────────────────────────────────────────── -->
+<section id="about">
+  <div class="inner">
+    <p class="section-label fade-up">Who We Are</p>
+    <h2 class="section-title fade-up">About Nolichucky Associates</h2>
+    <div class="rule fade-up"></div>
+
+    <div class="about-grid">
+      <div class="fade-up">
+        <p class="about-text">
+          Nolichucky Associates brings data science to nonprofit performing arts organizations. Founded by Tony Smith, a retired analytics professional, the firm specializes in audience intelligence, patron segmentation, and fundraising targeting — turning ticketing and donor data into actionable strategy.
+        </p>
+        <p class="about-text">
+          Current work includes a multi-year engagement with <strong>Music Worcester</strong>, one of New England's oldest classical music presenters, where Tony has developed patron segmentation models, audience analytics pipelines, fundraising targeting tools, and event sales prediction systems.
+        </p>
+
+        <div class="about-highlight">
+          That work has expanded into a research collaboration with <strong>Worcester Polytechnic Institute (WPI)</strong>, applying machine learning and predictive modeling to performing arts audience behavior.
+        </div>
+
+        <p class="about-text">
+          Tony's expertise spans audience segmentation, donor propensity modeling, demand forecasting, pricing optimization, and system integration — all delivered with a focus on practical, actionable insights that non-technical teams can actually use.
+        </p>
+        <p class="about-text">
+          Earlier career experience spans retail, digital marketing, data security, factory automation, and robotics — including building high-performance analytics teams, leading Agile/Scrum development, and presenting complex analytical concepts to diverse audiences from front-line staff to executive leadership.
+        </p>
+
+        <a href="#contact" class="btn btn-primary" style="display:inline-block;margin-top:8px;">Work with us</a>
+      </div>
+
+      <div class="about-sidebar fade-up">
+        <h3>Core Expertise</h3>
+        <ul class="skill-list">
+          <li>Patron &amp; donor segmentation</li>
+          <li>Fundraising propensity modeling</li>
+          <li>Event sales prediction</li>
+          <li>Demand forecasting</li>
+          <li>Pricing optimization</li>
+          <li>Marketing analytics</li>
+          <li>Machine learning &amp; AI</li>
+          <li>System integration</li>
+        </ul>
+
+        <h3>Tools &amp; Platforms</h3>
+        <ul class="skill-list">
+          <li>Python · SQL · Jupyter</li>
+          <li>Tableau · Power BI</li>
+          <li>Google BigQuery / GCP</li>
+          <li>Salesforce</li>
+          <li>Oracle · SQL Server</li>
+        </ul>
+
+        <h3>Industries</h3>
+        <ul class="skill-list">
+          <li>Performing Arts</li>
+          <li>Retail &amp; Digital Marketing</li>
+          <li>Data Security</li>
+          <li>Factory Automation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Insights / Blog ─────────────────────────────────── -->
+<section id="insights">
+  <div class="inner">
+    <p class="section-label fade-up">Watch, Read, Listen</p>
+    <h2 class="section-title fade-up">Insights</h2>
+    <div class="rule fade-up"></div>
+
+    <div class="insights-coming fade-up">
+      <p>&#9998;</p>
+      <p style="font-family:var(--serif);font-size:1.2rem;font-weight:600;color:var(--navy);margin-bottom:12px;">Articles and case studies coming soon.</p>
+      <p style="color:var(--ink-lite);font-size:.95rem;max-width:480px;margin:0 auto;">Thought-provoking pieces on data analytics, audience development, and what the numbers reveal about performing arts audiences.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Contact ─────────────────────────────────────────── -->
+<section id="contact">
+  <div class="inner">
+    <div class="contact-grid">
+
+      <div class="contact-info fade-up">
+        <p class="section-label">Get in Touch</p>
+        <h2 class="section-title">Let's Talk</h2>
+        <div class="rule"></div>
+        <p class="contact-text">
+          Whether you're looking to better understand your audience, improve fundraising results, or just want to explore what your data could reveal — we'd love to hear from you.
+        </p>
+
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:tony@nolichuckyassociates.com">
+            <div class="contact-link-icon">✉️</div>
+            <span>tony@nolichuckyassociates.com</span>
+          </a>
+          <a class="contact-link" href="https://www.linkedin.com/in/anthonymsmith" target="_blank" rel="noopener">
+            <div class="contact-link-icon">💼</div>
+            <span>LinkedIn — Anthony Smith</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form fade-up">
+        <h3>Send a Message</h3>
+        <form name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+          <input type="hidden" name="form-name" value="contact" />
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input class="form-input" type="text" id="name" name="name" placeholder="Jane Smith" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input class="form-input" type="email" id="email" name="email" placeholder="jane@example.com" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="org">Organization</label>
+            <input class="form-input" type="text" id="org" name="org" placeholder="Your arts organization" />
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Tell us about your organization and what you're trying to accomplish…" required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send Message</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ──────────────────────────────────────────── -->
+<footer>
+  <img src="logo.png" alt="Nolichucky Associates" />
+  <div class="footer-rule"></div>
+  <p><strong>Nolichucky Associates</strong></p>
+  <p style="margin-top:6px;">Data Analytics for the Performing Arts</p>
+  <p style="margin-top:8px;">&copy; <span id="year"></span> Nolichucky Associates. All rights reserved.</p>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.1 }
+  );
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message Sent!';
+    btn.style.background = '#2A9EA0';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Send Message';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 3000);
+  }
+</script>
+
+</body>
+</html>
