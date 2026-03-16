@@ -174,9 +174,8 @@
     }
 
     .hero-logo-wrap img {
-      width: 280px;
-      filter: brightness(0) invert(1);
-      opacity: .15;
+      width: 100%;
+      border-radius: 8px;
     }
 
     /* ── Section Shared ───────────────────────────────── */
@@ -479,7 +478,7 @@
     /* ── Responsive ───────────────────────────────────── */
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; }
-      .hero-logo-wrap { display: none; }
+      .hero-logo-wrap { display: block; margin-top: 32px; }
       .about-grid { grid-template-columns: 1fr; }
       .about-sidebar { position: static; }
       .contact-grid { grid-template-columns: 1fr; }
@@ -533,7 +532,8 @@
       </div>
     </div>
     <div class="hero-logo-wrap">
-      <img src="logo.png" alt="" aria-hidden="true" />
+      <img src="chorus.png" alt="Music Worcester performance at Mechanics Hall"
+        style="width:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.4);opacity:.92;" />
     </div>
   </div>
 </section>
