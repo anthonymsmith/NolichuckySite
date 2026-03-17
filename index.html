@@ -90,33 +90,45 @@
 
     /* ── Hero ─────────────────────────────────────────── */
     #hero {
-      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-lt) 60%, #1A5A6A 100%);
-      padding: 100px 24px;
       position: relative;
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
       overflow: hidden;
+      padding: 100px 24px;
     }
 
-    #hero::before {
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('chorus.png') center center / cover no-repeat;
+      z-index: 0;
+    }
+
+    .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse 50% 60% at 90% 50%, rgba(42,158,160,.15) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 50% at 10% 80%, rgba(232,146,42,.08) 0%, transparent 60%);
-      pointer-events: none;
+      background: linear-gradient(
+        100deg,
+        rgba(26,58,92,.88) 0%,
+        rgba(26,58,92,.75) 50%,
+        rgba(26,58,92,.4) 100%
+      );
     }
 
     .hero-inner {
       position: relative;
+      z-index: 1;
       max-width: var(--max-w);
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 64px;
-      align-items: center;
+      width: 100%;
     }
 
-    .hero-text { color: var(--white); }
+    .hero-text {
+      color: var(--white);
+      max-width: 600px;
+    }
 
     .hero-eyebrow {
       font-family: var(--serif);
@@ -130,18 +142,18 @@
 
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
       font-weight: 700;
-      line-height: 1.15;
+      line-height: 1.12;
       margin-bottom: 24px;
     }
 
     .hero-title span { color: var(--orange-lt); }
 
     .hero-subtitle {
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       line-height: 1.75;
-      color: rgba(255,255,255,.82);
+      color: rgba(255,255,255,.85);
       margin-bottom: 40px;
       max-width: 520px;
     }
@@ -167,16 +179,6 @@
     .btn-outline { border: 1px solid rgba(255,255,255,.4); color: var(--white); }
     .btn-outline:hover { border-color: var(--teal-lt); color: var(--teal-lt); transform: translateY(-2px); }
 
-    .hero-logo-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero-logo-wrap img {
-      width: 100%;
-      border-radius: 8px;
-    }
 
     /* ── Section Shared ───────────────────────────────── */
     section { padding: var(--section-pad); }
@@ -478,7 +480,6 @@
     /* ── Responsive ───────────────────────────────────── */
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; }
-      .hero-logo-wrap { display: block; margin-top: 32px; }
       .about-grid { grid-template-columns: 1fr; }
       .about-sidebar { position: static; }
       .contact-grid { grid-template-columns: 1fr; }
@@ -519,6 +520,7 @@
 
 <!-- ── Hero ───────────────────────────────────────────── -->
 <section id="hero">
+  <div class="hero-bg"></div>
   <div class="hero-inner">
     <div class="hero-text">
       <p class="hero-eyebrow">Data Analytics for the Performing Arts</p>
@@ -530,10 +532,6 @@
         <a href="#services" class="btn btn-primary">Our Services</a>
         <a href="#contact" class="btn btn-outline">Get in Touch</a>
       </div>
-    </div>
-    <div class="hero-logo-wrap">
-      <img src="chorus.png" alt="Music Worcester performance at Mechanics Hall"
-        style="width:100%;border-radius:8px;box-shadow:0 20px 60px rgba(0,0,0,.4);opacity:.92;" />
     </div>
   </div>
 </section>
