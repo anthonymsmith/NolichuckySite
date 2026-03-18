@@ -483,6 +483,7 @@
       .about-grid { grid-template-columns: 1fr; }
       .about-sidebar { position: static; }
       .contact-grid { grid-template-columns: 1fr; }
+      .cs-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 600px) {
@@ -492,6 +493,91 @@
       .nav-links a { font-size: .75rem; }
       .contact-form { padding: 28px 20px; }
     }
+
+    /* ── Case Studies ─────────────────────────────────── */
+    #case-studies { background: var(--gray); }
+
+    .cs-intro {
+      max-width: 680px;
+      color: var(--ink-mid);
+      margin-bottom: 56px;
+      font-size: 1.05rem;
+      font-style: italic;
+    }
+
+    .cs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
+      gap: 28px;
+    }
+
+    .cs-card {
+      background: var(--white);
+      border-radius: 6px;
+      padding: 36px;
+      border-top: 4px solid var(--orange);
+      position: relative;
+    }
+
+    .cs-card:nth-child(even) { border-top-color: var(--teal); }
+
+    .cs-number {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--gray-mid);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .cs-title {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+
+    .cs-tag {
+      font-size: .72rem;
+      font-family: var(--serif);
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 24px;
+    }
+
+    .cs-card:nth-child(even) .cs-tag { color: var(--orange); }
+
+    .cs-section { margin-bottom: 16px; }
+
+    .cs-label {
+      display: block;
+      font-family: var(--serif);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink-lite);
+      margin-bottom: 4px;
+    }
+
+    .cs-section p {
+      font-size: .9rem;
+      color: var(--ink-mid);
+      line-height: 1.75;
+    }
+
+    .cs-result {
+      background: var(--gray);
+      border-left: 3px solid var(--orange);
+      padding: 14px 16px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    .cs-card:nth-child(even) .cs-result { border-left-color: var(--teal); }
 
     /* ── Scroll animation ─────────────────────────────── */
     .fade-up {
@@ -513,7 +599,7 @@
     <li><a href="#hero">Home</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#about">About</a></li>
-    <li><a href="#insights">Insights</a></li>
+    <li><a href="#case-studies">Case Studies</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -658,17 +744,90 @@
   </div>
 </section>
 
-<!-- ── Insights / Blog ─────────────────────────────────── -->
-<section id="insights">
+<!-- ── Case Studies ────────────────────────────────────── -->
+<section id="case-studies">
   <div class="inner">
-    <p class="section-label fade-up">Watch, Read, Listen</p>
-    <h2 class="section-title fade-up">Insights</h2>
+    <p class="section-label fade-up">Portfolio of Work</p>
+    <h2 class="section-title fade-up">Case Studies</h2>
     <div class="rule fade-up"></div>
+    <p class="cs-intro fade-up">
+      The following engagements were conducted for a regional performing arts organization — anonymized to respect client confidentiality. Each began with fragmented, underutilized data and ended with tools and insights the organization's staff could act on immediately.
+    </p>
 
-    <div class="insights-coming fade-up">
-      <p>&#9998;</p>
-      <p style="font-family:var(--serif);font-size:1.2rem;font-weight:600;color:var(--navy);margin-bottom:12px;">Articles and case studies coming soon.</p>
-      <p style="color:var(--ink-lite);font-size:.95rem;max-width:480px;margin:0 auto;">Thought-provoking pieces on data analytics, audience development, and what the numbers reveal about performing arts audiences.</p>
+    <div class="cs-grid">
+
+      <div class="cs-card fade-up">
+        <div class="cs-number">01</div>
+        <h3 class="cs-title">From Scattered Data to Patron Intelligence</h3>
+        <div class="cs-tag">Patron Segmentation &middot; Data Integration</div>
+        <div class="cs-section">
+          <span class="cs-label">Challenge</span>
+          <p>Patron data was spread across a ticketing system, CRM, and donation records with no unified view. Marketing and programming decisions were made largely by intuition and institutional memory.</p>
+        </div>
+        <div class="cs-section">
+          <span class="cs-label">Approach</span>
+          <p>Unified 8+ years of ticketing history with CRM and donation records. Engineered 40+ patron attributes — recency, frequency, spend trajectory, genre preference, geography, and engagement signals. Built a lifecycle segmentation model assigning every patron to an actionable stage.</p>
+        </div>
+        <div class="cs-section cs-result">
+          <span class="cs-label">Result</span>
+          <p>Every patron now carries a data story. Staff filter and target with precision — by segment, preferred genre, region, or engagement trend — instead of relying on gut instinct or stale lists.</p>
+        </div>
+      </div>
+
+      <div class="cs-card fade-up">
+        <div class="cs-number">02</div>
+        <h3 class="cs-title">Who to Call This Week</h3>
+        <div class="cs-tag">Fundraising Targeting &middot; Propensity Modeling</div>
+        <div class="cs-section">
+          <span class="cs-label">Challenge</span>
+          <p>The development director maintained donor outreach lists by hand — workable, but dependent on one person and impossible to measure. There was no systematic way to rank prospects or track what was working.</p>
+        </div>
+        <div class="cs-section">
+          <span class="cs-label">Approach</span>
+          <p>Built a six-tier donor classification system scoring every patron by giving likelihood, recency, upgrade potential, and giving-season timing. Integrated ticket purchase history with donation records to surface non-obvious prospects.</p>
+        </div>
+        <div class="cs-section cs-result">
+          <span class="cs-label">Result</span>
+          <p>A weekly-ready ranked call list replaced hours of manual work. For the first time, campaign response rates can be tracked by tier — making each cycle smarter than the last.</p>
+        </div>
+      </div>
+
+      <div class="cs-card fade-up">
+        <div class="cs-number">03</div>
+        <h3 class="cs-title">Where Your Audience Is — and Isn't</h3>
+        <div class="cs-tag">Audience Geography &middot; Event Analytics</div>
+        <div class="cs-section">
+          <span class="cs-label">Challenge</span>
+          <p>No visibility into regional attendance patterns or how they shifted by event type, genre, or headliner. Marketing campaigns were geographically undifferentiated — the same message sent everywhere.</p>
+        </div>
+        <div class="cs-section">
+          <span class="cs-label">Approach</span>
+          <p>Geocoded 8+ seasons of ticket purchases across 40+ events. Built custom geographic regions tuned to the organization's actual draw area. Mapped attendance by genre, headliner tier, and price category across every season.</p>
+        </div>
+        <div class="cs-section cs-result">
+          <span class="cs-label">Result</span>
+          <p>Revealed that headliner and contemporary events draw from distant suburbs and the city; choral is highly local; dance attracts new neighborhood audiences. Every event type now has a geographic marketing profile.</p>
+        </div>
+      </div>
+
+      <div class="cs-card fade-up">
+        <div class="cs-number">04</div>
+        <h3 class="cs-title">Retention, Forecasting &amp; the Patron Lifecycle</h3>
+        <div class="cs-tag">Retention Analysis &middot; Attendance Forecasting</div>
+        <div class="cs-section">
+          <span class="cs-label">Challenge</span>
+          <p>No forward visibility on ticket sales. No retention baseline. Post-pandemic recovery was happening, but leadership couldn't quantify it or project ahead with confidence.</p>
+        </div>
+        <div class="cs-section">
+          <span class="cs-label">Approach</span>
+          <p>Built repeat-aware attendance forecasting models accounting for patron history and behavioral segments. Analyzed new patron and year-over-year retention rates across event types, genres, and six seasons of history.</p>
+        </div>
+        <div class="cs-section cs-result">
+          <span class="cs-label">Result</span>
+          <p>Established retention benchmarks — 15% new patron return rate, 33% year-over-year. Forecast vs. actual tracking created a feedback loop the organization can improve season over season.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
