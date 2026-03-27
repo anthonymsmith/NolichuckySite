@@ -67,7 +67,7 @@
     }
 
     .nav-logo img {
-      height: 44px;
+      height: 52px;
       width: auto;
       filter: drop-shadow(0 1px 3px rgba(0,0,0,.4));
     }
@@ -125,6 +125,22 @@
       max-width: var(--max-w);
       margin: 0 auto;
       width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    .hero-logo {
+      flex-shrink: 0;
+      opacity: .92;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,.5));
+    }
+
+    .hero-logo img {
+      width: 200px;
+      height: auto;
+      display: block;
     }
 
     .hero-text {
@@ -257,6 +273,9 @@
     }
 
     .service-card--highlight .service-icon { background: var(--teal); }
+    .service-icon--orange { background: var(--orange) !important; }
+    .service-icon--navy   { background: var(--navy)  !important; }
+    .service-icon--teal   { background: var(--teal)  !important; }
 
     .service-title {
       font-family: var(--serif);
@@ -490,7 +509,8 @@
 
     /* ── Responsive ───────────────────────────────────── */
     @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; }
+      .hero-inner { flex-direction: column; align-items: flex-start; }
+      .hero-logo { display: none; }
       .about-grid { grid-template-columns: 1fr; }
       .about-sidebar { position: static; }
       .contact-grid { grid-template-columns: 1fr; }
@@ -631,6 +651,9 @@
         <a href="overview.html" target="_blank" class="btn btn-outline">Download Overview</a>
       </div>
     </div>
+    <div class="hero-logo">
+      <img src="logo.png" alt="Nolichucky Associates" />
+    </div>
   </div>
 </section>
 
@@ -647,31 +670,31 @@
     <div class="services-grid">
 
       <div class="service-card fade-up service-card--highlight">
-        <div class="service-icon">🔗</div>
+        <div class="service-icon service-icon--teal">🔗</div>
         <h3 class="service-title">Data Integration & Preparation</h3>
         <p class="service-desc">Most arts organizations have patron data scattered across ticketing systems, donor platforms, spreadsheets, and financial records that have never talked to each other. We connect them — whatever the source — into a single, accurate picture of each patron's full relationship with your organization.</p>
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon">👥</div>
+        <div class="service-icon service-icon--orange">👥</div>
         <h3 class="service-title">Audience Analytics & Segmentation</h3>
         <p class="service-desc">Who are your regulars? Who came once and never returned? Who's slipping away? We analyze attendance patterns, patron behavior, and lifecycle stage across your full audience — building segments your team can actually use for outreach, programming, and planning.</p>
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon">🎯</div>
+        <div class="service-icon service-icon--navy">🎯</div>
         <h3 class="service-title">Fundraising Targeting</h3>
         <p class="service-desc">The easiest donors to find are the ones already giving. The more valuable work is surfacing the ticket buyer who's never been asked, the lapsed donor worth reactivating, and the loyal patron ready to give significantly more. We build the models that find them all.</p>
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon">📊</div>
+        <div class="service-icon service-icon--teal">📊</div>
         <h3 class="service-title">Marketing Analytics & Strategy</h3>
         <p class="service-desc">Which campaigns are working? Which events need a different geographic target? Which patrons are ready for a personalized ask? We measure what's happening, identify where to focus, and help you build targeted campaigns — by segment, region, genre, or engagement level — that reach the right people with the right message.</p>
       </div>
 
       <div class="service-card fade-up">
-        <div class="service-icon">💰</div>
+        <div class="service-icon service-icon--orange">💰</div>
         <h3 class="service-title">Event &amp; Pricing Analysis</h3>
         <p class="service-desc">Which events are driving revenue? Which genres draw from outside your core market? Which venues are underperforming relative to their potential? We analyze event profitability, attendance patterns, and pricing across your full season — so programming and pricing decisions are grounded in evidence, not just instinct.</p>
       </div>
